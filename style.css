@@ -1,0 +1,231 @@
+/* Глобальні стилі та шрифти */
+:root {
+    --primary-color: #f1a900; /* Насичений рожевий/червоний для акценту */
+    --secondary-color: #04de00; /* Блакитний */
+    --success-color: #45c920;
+    --error-color: #ff0019;
+    --font-family: 'Montserrat', sans-serif;
+    --border-radius: 18px; /* Більші заокруглення */
+    --box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15); /* Більш глибока тінь */
+}
+
+
+/* Налаштування теми: Світла */
+.light-theme {
+    --card-bg: rgba(255, 255, 255, 0.95);
+    --text-color: #333333;
+    --btn-text-color: #ffffff;
+}
+
+
+/* Налаштування теми: Темна */
+.dark-theme {
+    --card-bg: rgba(44, 62, 80, 0.95);
+    --text-color: #f1f1f1;
+    --btn-text-color: #ffffff;
+}
+
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+
+body {
+    font-family: var(--font-family);
+    color: var(--text-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 20px;
+    background: transparent; /* Фон буде через окремий контейнер */
+}
+
+
+/* 1. Стилі для фонового зображення */
+#background-image-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('https://images.samsung.com/is/image/samsung/assets/ua/smartphones/galaxy-s25/images/galaxy-s25-features-kv.jpg?imbypass=true'); /* ЗАМІНІТЬ НА ВАШЕ ЗОБРАЖЕННЯ ФОНУ */
+    background-size: cover;
+    background-position: center;
+    filter: blur(5px) brightness(0.7); /* Ефект розмиття */
+    z-index: -1;
+    transition: filter 0.5s ease;
+}
+
+
+.container {
+    width: 100%;
+    max-width: 700px;
+    z-index: 10;
+}
+
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 25px;
+}
+
+
+.quiz-title {
+    color: white; /* Чіткий білий текст на фоні */
+    text-shadow: 0 3px 5px rgba(0, 0, 0, 0.5);
+    font-size: 2em;
+}
+
+
+/* 2. Стилі для основного блоку вікторини (напівпрозорий) */
+.quiz-box, .result-box {
+    background-color: var(--card-bg);
+    padding: 40px;
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow);
+    backdrop-filter: blur(5px); /* Ефект матового скла */
+    transition: background-color 0.4s, box-shadow 0.4s;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+
+.question-text {
+    font-size: 1.4em;
+    font-weight: bold;
+    margin-bottom: 25px;
+    text-align: center;
+}
+
+
+.question-img {
+    max-width: 100%;
+    height: auto;
+    max-height: 350px;
+    object-fit: cover;
+    border-radius: var(--border-radius);
+    margin: 0 auto 30px auto;
+    display: block !important;
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+}
+
+
+/* 3. Прогрес-бар */
+.progress-bar-container {
+    width: 100%;
+    height: 8px;
+    background-color: rgba(255, 255, 255, 0.2);
+    border-radius: 4px;
+    margin-bottom: 20px;
+    overflow: hidden;
+}
+
+
+.progress-bar {
+    height: 100%;
+    width: 0%;
+    background-color: var(--primary-color);
+    transition: width 0.4s ease-in-out;
+}
+
+
+/* 4. Стилі для кнопок (Мінімалізм та Акцент) */
+.btn {
+    padding: 15px 25px;
+    border: 2px solid var(--primary-color);
+    border-radius: 50px; /* Пігулка */
+    cursor: pointer;
+    font-size: 1em;
+    font-weight: 700;
+    transition: all 0.2s ease-out;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+
+/* Кнопки відповідей */
+.answer-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+    margin-bottom: 30px;
+}
+
+
+.answer-btn {
+    background: none;
+    color: var(--text-color);
+    border: 2px solid var(--text-color);
+}
+
+
+.answer-btn:hover:not(:disabled) {
+    background-color: var(--primary-color);
+    color: var(--btn-text-color);
+    transform: translateY(-2px) scale(1.02);
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+}
+
+
+/* Кнопка "Наступний трек" */
+.next-btn {
+    width: 100%;
+    background-color: var(--primary-color);
+    color: var(--btn-text-color);
+    border: none;
+    box-shadow: 0 4px 10px rgba(var(--primary-color), 0.5);
+}
+
+
+/* Стилі для правильних/неправильних відповідей */
+.correct {
+    background-color: var(--success-color) !important;
+    border-color: var(--success-color) !important;
+    color: white !important;
+}
+
+
+.incorrect {
+    background-color: var(--error-color) !important;
+    border-color: var(--error-color) !important;
+    color: white !important;
+}
+
+
+.btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    transform: none;
+    box-shadow: none;
+}
+
+
+/* Кнопка зміни теми */
+.theme-btn {
+    background: none;
+    border: 2px solid white;
+    color: white;
+    padding: 8px 15px;
+    font-size: 0.9em;
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
+}
+
+
+/* Адаптивність */
+@media (max-width: 600px) {
+    .answer-grid {
+        grid-template-columns: 1fr;
+    }
+    .quiz-box, .result-box {
+        padding: 25px;
+    }
+    .quiz-title {
+        font-size: 1.5em;
+    }
+}
+
