@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Вшкторина про телефони</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body class="light-theme">
+    <div id="background-image-container"></div>
+   
+    <div class="container">
+        <header>
+            <h1 class="quiz-title">Вгадай модель телефону</h1>
+            <button id="theme-toggle" class="btn theme-btn">🌙 Dark Mode</button>
+        </header>
+
+
+        <div id="quiz-box" class="quiz-box">
+            <div id="question-area">
+                <div id="progress" class="progress-bar-container">
+                    <div id="progress-bar" class="progress-bar"></div>
+                </div>
+                <img id="question-image" src="" alt="Зображення до питання" class="question-img" style="display: none;">
+                <p id="question-text" class="question-text"></p>
+            </div>
+
+
+            <div id="answer-buttons" class="answer-grid">
+                </div>
+
+
+            <button id="next-button" class="btn next-btn" disabled>Наступне питання</button>
+        </div>
+
+
+        <div id="result-box" class="result-box" style="display: none;">
+            <h2>Ваш Фінальний Результат! 🏆</h2>
+            <p id="score-text"></p>
+            <button id="restart-button" class="btn restart-btn">Почати квіз знову</button>
+        </div>
+    </div>
+
+
+    <script src="script.js"></script>
+</body>
+</html>
+
